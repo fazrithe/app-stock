@@ -10,26 +10,30 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header text-center"><img src="{{ asset('assets/img/logo2.png') }}" alt="User Image" width="50%"></div>
-
+                <div class="card-header text-center"><img src="{{ asset('assets/img/logo2.png') }}" alt="User Image" width="50%">
+                    @if ($message = Session::get('error'))
+                    <div class="alert alert-danger">
+                    <p>{{ $message }}</p>
+                </div>
+                @endif
                 <div class="card-body">
                     <div class="col mb-4">
                         <div class="text-center text-bold">STOCK OPNAME TOKO</div>
                     </div>
-                    <form method="POST" action="{{ route('login') }}">
+                    <form method="POST" action="{{ route('actionlogin') }}">
                         @csrf
                         <div class="form-group row">
                             <label for="tanggal" class="col-md-4 col-form-label text-md-right">{{ __('Tanggal') }}</label>
 
                             <div class="col-md-6">
-                                <input id="tanggal" type="date" class="form-control" name="tanggal" value="" required autofocus>
+                                <input id="tanggal" type="date" class="form-control" name="login_date" value="" required autofocus>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="tempat" class="col-md-4 col-form-label text-md-right">{{ __('Tempat') }}</label>
 
                             <div class="col-md-6">
-                                <select name="tempat" class="form-control" required>
+                                <select name="area" class="form-control" required>
                                     <option value="">--Select Tempat--</option>
                                     <option value="toko">Toko</option>
                                     <option value="gudang">Gudang</option>

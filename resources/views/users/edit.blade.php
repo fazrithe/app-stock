@@ -54,6 +54,20 @@
                     {!! Form::select('roles[]', $roles,$userRole, array('class' => 'form-control','multiple')) !!}
                 </div>
             </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Area:</strong>
+                    <select name="area" class="form-control">
+                        @if($user->area == 'gudang')
+                        <option value="gudang">Gudang</option>
+                        <option value="toko">Toko</option>
+                        @else
+                        <option value="toko">Toko</option>
+                        <option value="gudang">Gudang</option>
+                        @endif
+                    </select>
+                </div>
+            </div>
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <button type="submit" class="btn btn-primary">Submit</button>
             </div>

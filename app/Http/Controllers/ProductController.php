@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\ProductExport;
 use DataTables;
 
 class ProductController extends Controller
@@ -122,5 +124,16 @@ class ProductController extends Controller
 
         return redirect()->route('products.index')
                         ->with('success','Product deleted successfully');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Product  $product
+     * @return \Illuminate\Http\Response
+     */
+    public function export()
+    {
+        return Excel::download(new ProductExport, 'product.xlsx');
     }
 }

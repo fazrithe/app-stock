@@ -26,7 +26,7 @@
                             <label for="tanggal" class="col-md-4 col-form-label text-md-right">{{ __('Tanggal') }}</label>
 
                             <div class="col-md-6">
-                                <input id="tanggal" type="date" class="form-control" name="login_date" value="" required autofocus>
+                                <input id="tanggal" type="text" class="date form-control" name="login_date" value="" required autofocus>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -105,3 +105,9 @@
 </div>
 </div>
 </body>
+<script type="text/javascript">
+    $('.date').datepicker({
+       format: 'yyyy-mm-dd',
+       autoclose: true,
+     });
+</script>

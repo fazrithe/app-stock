@@ -34,4 +34,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('users', UserController::class);
     Route::resource('products', ProductController::class);
     Route::get('stocks', [StockController::class, 'index'])->name('stocks');
+    Route::post('searchProduct', [StockController::class, 'searchProduct'])->name('product.search');
+    Route::post('updateProduct', [StockController::class, 'updateProduct'])->name('product.update');
+    Route::get('showProduct/{id}', [StockController::class, 'showProduct'])->name('product.show');
 });

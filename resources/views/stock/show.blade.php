@@ -20,7 +20,7 @@
                     <div class="col mb-4">
                         <div class="text-center text-bold">STOCK OPNAME TOKO</div>
                         <div class="text-right">
-                            <label>{{ $data['area'] }}</label>
+                            <label>{{ $data['login_date'] }}</label>
                         </div>
                     </div>
 
@@ -31,8 +31,6 @@
                             <form method="POST" action="{{ route('product.search') }}">
                                 @csrf
                                 <div class="input-group">
-                                    <input type="hidden" name="area" id="area" class="form-control" value="{{ $data['area'] }}">
-                                    <input type="hidden" name="login_date" id="login_date" class="form-control" value="{{ $data['login_date'] }}">
                                     <input type="text" name="kode_barang" id="kode_barang" class="form-control" placeholder="Cari Kode Barang/ Barcode">
                                     <div class="input-group-append">
                                       <button class="btn btn-primary" id="btnsearch" type="button">
@@ -48,15 +46,15 @@
                         </div>
                         <div class="row">
                             <div class="col-6">
-                                <label id="merk"></label>
+                                <label id="merk">{{ $data->merk }}</label>
                             </div>
                             <div class="col-6">
-                                <label id="barcode"></label>
+                                <label id="barcode">{{ $data->barcode }}</label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
-                                <label id="nama_barang"></label>
+                                <label id="nama_barang">{{ $data->nama_barang }}</label>
                             </div>
                         </div>
                         {{-- <div class="row">
@@ -65,29 +63,51 @@
                             </div>
                         </div> --}}
                         <hr>
-                        <div id="jumlah" style="display: none">
-                            <form method="POST" action="{{ route('product.update') }}">
-                                @csrf
+                        <div id="jumlah" style="display: block">
                                 <div class="row">
                                     <div class="col-4 text-right">
-                                        <label>Jumlah :</label>
+                                        <label>Stok Toko</label>
                                     </div>
                                     <div class="col-4">
                                         <input type="hidden" id="id" class="form-control" name="id">
-                                        <input type="number" class="form-control" id="stok" name="stock">
+                                        <input type="number"  class="form-control" name="stock" value="{{ $data->stok_toko }}" readonly>
                                     </div>
                                     <div class="col-4 text-left">
-                                        <label id="satuan"></label>
+                                        <label id="satuan">{{ $data->satuan }}</label>
                                     </div>
                                 </div>
-
-                                <div class="row mt-2">
-                                    <div class="col">
-                                        <Button class="btn btn-primary">Save</Button>
-                                    </div>
-                                </div>
-                            </form>
                         </div>
+                        <hr>
+                        <div id="jumlah" style="display: block">
+                            <div class="row">
+                                <div class="col-4 text-right">
+                                    <label>Stok Gudang</label>
+                                </div>
+                                <div class="col-4">
+                                    <input type="hidden" id="id" class="form-control" name="id">
+                                    <input type="number" class="form-control" name="stock" value="{{ $data->stok_gudang }}" readonly>
+                                </div>
+                                <div class="col-4 text-left">
+                                    <label id="satuan">{{ $data->satuan }}</label>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div id="jumlah" style="display: block">
+                            <div class="row">
+                                <div class="col-4 text-right">
+                                    <label>Total</label>
+                                </div>
+                                <div class="col-4">
+                                    <input type="hidden" id="id" class="form-control" name="id">
+                                    <input type="number" class="form-control" name="stock" value="{{ $data->stok_gudang }}" readonly>
+                                </div>
+                                <div class="col-4 text-left">
+                                    <label id="satuan">{{ $data->satuan }}</label>
+                                </div>
+                            </div>
+                        </div>
+
                 </div>
             </div>
         </div>
@@ -117,8 +137,6 @@
              method: 'post',
              data: {
                 kode_barang: jQuery('#kode_barang').val(),
-                login_date: jQuery('#login_date').val(),
-                area: jQuery('#area').val(),
              },
              success: function(result){
                 var result = JSON.parse(result);
@@ -129,7 +147,6 @@
                     jQuery('#barcode').html(result.data.barcode);
                     jQuery('#satuan').html(result.data.satuan);
                     jQuery('#id').val(result.data.id);
-                    jQuery('#stok').val(result.stok);
                     var x = document.getElementById("jumlah");
                     if (x.style.display === "none") {
                         x.style.display = "block";

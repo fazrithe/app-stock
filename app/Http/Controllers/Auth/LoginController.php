@@ -51,6 +51,8 @@ class LoginController extends Controller
             'area' => $request->input('area'),
         ];
 
+        $request->session()->put('login_date', $request->login_date);
+
         if (Auth::Attempt($data)) {
             $area = Auth::user()->area;
             return redirect('stocks');

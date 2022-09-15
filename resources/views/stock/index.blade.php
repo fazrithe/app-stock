@@ -46,6 +46,17 @@
                             </form>
                             </div>
                         </div>
+                        <div align="center" id="or">
+                            Or
+                         </div>
+                         <br>
+                         <div align="center">
+                             <img src="{{ asset('assets/img/scanner.png') }}" width="30%" onclick="scanner()" id="scanner" style="margin: auto">
+                         </div>
+                         <div align="center" id="display" style="display:none">
+                             <div id="qr-reader" class="text-center" style="margin: auto"></div>
+                         </div>
+                         <br>
                         <div class="row">
                             <div class="col-6">
                                 <label id="merk"></label>
@@ -82,6 +93,9 @@
                                 </div>
 
                                 <div class="row mt-2">
+                                    <div class="col">
+                                        <a href="" class="btn btn-success">Scan</a>
+                                    </div>
                                     <div class="col">
                                         <Button class="btn btn-primary">Save</Button>
                                     </div>
@@ -131,15 +145,59 @@
                     jQuery('#id').val(result.data.id);
                     jQuery('#stok').val(result.stok);
                     var x = document.getElementById("jumlah");
-                    if (x.style.display === "none") {
+                    var display = document.getElementById("display");
+                    var scanner = document.getElementById("scanner");
+                    var or      = document.getElementById("or");
                         x.style.display = "block";
-                    } else {
-                        x.style.display = "none";
-                    }
+                        display.style.display = "none";
+                        scanner.style.display = "none";
+                        or.style.display = "none";
                 }else{
                     alert("Data tidak ditemukan !");
                 }
              }});
           });
        });
+</script>
+<script src="https://unpkg.com/html5-qrcode@2.0.9/dist/html5-qrcode.min.js"></script>
+<script>
+function scanner(){
+    var x = document.getElementById("display");
+    var y = document.getElementById("scanner");
+    var or = document.getElementById("or");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+            y.style.display = "none";
+            or.style.display = "none";
+        } else {
+            x.style.display = "none";
+            y.style.display = "block";
+            or.style.display = "block";
+        }
+    let qrboxFunction = function(viewfinderWidth, viewfinderHeight) {
+    let minEdgePercentage = 0.7; // 70%
+    let minEdgeSize = Math.min(viewfinderWidth, viewfinderHeight);
+    let qrboxSize = Math.floor(minEdgeSize * minEdgePercentage);
+    return {
+        width: qrboxSize,
+        height: qrboxSize
+    };
+}
+
+
+const html5QrCode = new Html5Qrcode("qr-reader");
+const qrCodeSuccessCallback = (decodedText, decodedResult) => {
+    /* handle success */
+    console.log(`Scan result: ${decodedText}`, decodedResult);
+    document.getElementById('kode').value=decodedText;
+    // ...
+    html5QrcodeScanner.clear();
+};
+const config = { fps: 10, qrbox: 250 };
+
+// Select front camera or fail with `OverconstrainedError`.
+// html5QrCode.start({ facingMode: { exact: "environment"} }, config, qrCodeSuccessCallback);
+html5QrCode.start({ facingMode: { exact: "user"} }, config, qrCodeSuccessCallback);
+
+}
 </script>

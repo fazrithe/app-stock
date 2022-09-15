@@ -60,4 +60,15 @@ class LoginController extends Controller
             return redirect('/')->with('error', 'Email atau Password Salah');
         }
     }
+
+    public function actionlogout(Request $request)
+    {
+        Auth::logout();
+
+        request()->session()->invalidate();
+
+        request()->session()->regenerateToken();
+
+        return redirect('/');
+    }
 }

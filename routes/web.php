@@ -28,7 +28,7 @@ Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::post('actionlogin', [LoginController::class, 'actionlogin'])->name('actionlogin');
-
+Route::post('actionlogout', [LoginController::class, 'actionlogout'])->name('actionlogout');
 Route::group(['middleware' => ['auth']], function() {
     Route::resource('roles', RoleController::class);
     Route::resource('users', UserController::class);

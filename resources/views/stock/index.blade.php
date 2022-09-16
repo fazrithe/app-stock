@@ -57,6 +57,9 @@
                              <div id="qr-reader" class="text-center" style="margin: auto"></div>
                          </div>
                          <br>
+                        <div>
+                            <div><img id="image" src="" width="30%" style="margin: auto"></div>
+                        </div>
                         <div class="row">
                             <div class="col-6">
                                 <label id="merk"></label>
@@ -67,7 +70,8 @@
                         </div>
                         <div class="row">
                             <div class="col">
-                                <label id="nama_barang"></label>
+                                <label id="kode_barang_1"></label>
+                                <p id="nama_barang"></p>
                             </div>
                         </div>
                         {{-- <div class="row">
@@ -136,10 +140,11 @@
              },
              success: function(result){
                 var result = JSON.parse(result);
-
+                // console.log(result.data.kode_barang);
                 if(result.statusCode == 200){
                     jQuery('#merk').html(result.data.merk);
                     jQuery('#nama_barang').html(result.data.nama_barang);
+                    jQuery('#kode_barang_1').html(result.data.kode_barang);
                     jQuery('#barcode').html(result.data.barcode);
                     jQuery('#satuan').html(result.data.satuan);
                     jQuery('#id').val(result.data.id);
@@ -148,10 +153,19 @@
                     var display = document.getElementById("display");
                     var scanner = document.getElementById("scanner");
                     var or      = document.getElementById("or");
+                    var image1 = "https://tianliong.co.id/info/assets/img/products/"+result.data.gambar;
+                    console.log(image1);
                         x.style.display = "block";
                         display.style.display = "none";
                         scanner.style.display = "none";
                         or.style.display = "none";
+                        let image = document.getElementById("image");
+                        image.src =
+                        "https://tianliong.co.id/info/assets/img/products/"+result.data.gambar
+
+                        document.getElementById("btnID")
+                                .style.display = "none";
+
                 }else{
                     alert("Data tidak ditemukan !");
                 }

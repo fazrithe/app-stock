@@ -33,7 +33,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('roles', RoleController::class);
     Route::resource('users', UserController::class);
     Route::resource('products', ProductController::class);
-    Route::get('productExport', [ProductController::class, 'export'])->name('product.export');
+    Route::get('product/select', [ProductController::class, 'selectProduct'])->name('product.select');
+    Route::post('productExport', [ProductController::class, 'export'])->name('product.export');
     Route::get('stocks', [StockController::class, 'index'])->name('stocks');
     Route::post('searchProduct', [StockController::class, 'searchProduct'])->name('product.search');
     Route::post('updateProduct', [StockController::class, 'updateProduct'])->name('product.update');

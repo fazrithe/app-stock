@@ -8,6 +8,7 @@
             <th>Satuan</th>
             <th>Stok Toko</th>
             <th>Stok Barang</th>
+            <th>Sales</th>
         </tr>
     </thead>
     <tbody>
@@ -19,7 +20,8 @@
                 <td>{{ $dt->nama_barang }}</td>
                 <td>{{ $dt->satuan }}</td>
                 <td>{{ $dt->stok_toko }}</td>
-                <td>{{ $dt->stok_barang }}</td>
+                <td>{{ $dt->stok_gudang }}</td>
+                <td>{{ $dt->name_user }}</td>
             </tr>
         @endforeach
     </tbody>

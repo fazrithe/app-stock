@@ -22,6 +22,7 @@ class ProductController extends Controller
          $this->middleware('permission:product-edit', ['only' => ['edit','update']]);
          $this->middleware('permission:product-delete', ['only' => ['destroy']]);
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -41,6 +42,16 @@ class ProductController extends Controller
                 ->make(true);
         }
         return view('products.index');
+    }
+
+     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function selectProduct()
+    {
+        return view('products.select');
     }
 
     /**
@@ -132,8 +143,9 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function export()
+    public function export(Request $request)
     {
-        return Excel::download(new ProductExport, 'product.xlsx');
+        $date = $request->date;
+        return Excel::download(new ProductExport($date), 'product.xlsx');
     }
 }

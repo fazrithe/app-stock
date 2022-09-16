@@ -88,6 +88,7 @@
                                         <label>Jumlah :</label>
                                     </div>
                                     <div class="col-4">
+                                        <input type="hidden" name="update_date" class="form-control" value="{{ $data['login_date'] }}">
                                         <input type="hidden" id="id" class="form-control" name="id">
                                         <input type="number" class="form-control" id="stok" name="stock">
                                     </div>
@@ -98,7 +99,7 @@
 
                                 <div class="row mt-2">
                                     <div class="col">
-                                        <a href="" class="btn btn-success">Scan</a>
+                                        <a href="#" class="btn btn-success">Scan</a>
                                     </div>
                                     <div class="col">
                                         <Button class="btn btn-primary">Save</Button>

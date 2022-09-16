@@ -99,6 +99,7 @@ class StockController extends Controller
             }else{
                 $salesStock->stok_gudang = $request->stock;
             }
+            $salesStock->updated_at = $request->update_date;
             $salesStock->save();
         }
 

@@ -12,15 +12,19 @@ class ProductExport implements FromView
      /**
      * @return \Illuminate\Support\Collection
      */
-    public function __construct()
+    public function __construct(string $keyword)
     {
-
+        $this->date = $keyword;
     }
 
     public function view(): View
     {
         return view('products.export', [
-            'data' => Product::limit(10)->get()
+            'data' => Product::select('products.*','sales_stocks.*','users.name as name_user')
+            ->whereDate('sales_stocks.updated_at', $this->date)
+            ->join('sales_stocks', 'sales_stocks.product_id', '=', 'products.id')
+            ->join('users', 'users.id', '=', 'sales_stocks.user_id')
+            ->get()
         ]);
     }
 }

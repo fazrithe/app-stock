@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Product;
+use App\Models\Sales_stock;
 
 class StockController extends Controller
 {
@@ -45,10 +46,15 @@ class StockController extends Controller
     public function searchProduct(Request $request)
     {
         $data = Product::where('kode_barang', $request->kode_barang)->orWhere('barcode',$request->kode_barang)->first();
-        if($request->area == "gudang"){
-            $stok = $data->stok_gudang;
+        $datastock = Sales_stock::where('product_id', $data->id)->first();
+        if(!empty($datastock)){
+            if($request->area == "gudang"){
+                $stok = $datastock->stok_gudang;
+            }else{
+                $stok = $datastock->stok_toko;
+            }
         }else{
-            $stok = $data->stok_toko;
+            $stok = 0;
         }
         if(empty($data)){
             $statusCode = 500;
@@ -70,13 +76,31 @@ class StockController extends Controller
     public function updateProduct(Request $request)
     {
         $area = Auth::user()->area;
-        $data = Product::find($request->id);
-        if($area == 'toko'){
-            $data->stok_toko = $request->stock;
+        $user_id = Auth::user()->id;
+        $data = Sales_stock::where('product_id',$request->id)
+        ->where('user_id',$user_id)
+        ->first();
+        if(!empty($data)){
+            $salesStock = Sales_stock::where('product_id',$request->id)->first();
+            $salesStock->user_id = $user_id;
+            $salesStock->product_id = $request->id;
+            if($area == 'toko'){
+                $salesStock->stok_toko = $request->stock;
+            }else{
+                $salesStock->stok_gudang = $request->stock;
+            }
+            $salesStock->save();
         }else{
-            $data->stok_gudang = $request->stock;
+            $salesStock = new Sales_stock();
+            $salesStock->user_id = $user_id;
+            $salesStock->product_id = $request->id;
+            if($area == 'toko'){
+                $salesStock->stok_toko = $request->stock;
+            }else{
+                $salesStock->stok_gudang = $request->stock;
+            }
+            $salesStock->save();
         }
-        $data->save();
 
         return redirect()->to('showProduct/'.$request->id);
     }
@@ -89,6 +113,8 @@ class StockController extends Controller
     public function showProduct($id)
     {
         $data = Product::find($id);
-        return view('stock.show', compact('data'));
+        $datastock = Sales_stock::where('product_id',$id)->first();
+        $total = $datastock->stok_gudang + $datastock->stok_toko;
+        return view('stock.show', compact('data','datastock','total'));
     }
 }

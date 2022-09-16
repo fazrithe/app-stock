@@ -49,7 +49,7 @@
                                     </div>
                                     <div class="col-4">
                                         <input type="hidden" id="id" class="form-control" name="id">
-                                        <input type="number"  class="form-control" name="stock" value="{{ $data->stok_toko }}" readonly>
+                                        <input type="number"  class="form-control" name="stock" value="{{ $datastock->stok_toko }}" readonly>
                                     </div>
                                     <div class="col-4 text-left">
                                         <label id="satuan">{{ $data->satuan }}</label>
@@ -64,7 +64,7 @@
                                 </div>
                                 <div class="col-4">
                                     <input type="hidden" id="id" class="form-control" name="id">
-                                    <input type="number" class="form-control" name="stock" value="{{ $data->stok_gudang }}" readonly>
+                                    <input type="number" class="form-control" name="stock" value="{{ $datastock->stok_gudang }}" readonly>
                                 </div>
                                 <div class="col-4 text-left">
                                     <label id="satuan">{{ $data->satuan }}</label>
@@ -79,7 +79,7 @@
                                 </div>
                                 <div class="col-4">
                                     <input type="hidden" id="id" class="form-control" name="id">
-                                    <input type="number" class="form-control" name="stock" value="{{ $data->stok_gudang }}" readonly>
+                                    <input type="number" class="form-control" name="stock" value="{{ $total }}" readonly>
                                 </div>
                                 <div class="col-4 text-left">
                                     <label id="satuan">{{ $data->satuan }}</label>

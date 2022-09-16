@@ -21,9 +21,11 @@ class ProductExport implements FromView
     public function view(): View
     {
         return view('products.export', [
-            'data' => Product::select('sales_stocks.*','products.*','sales_stocks.updated_at as stock_date')
+            'data' => Product::select('sales_stocks.product_id')
+            ->select('products.*')
             ->whereDate('sales_stocks.updated_at', $this->date)
             ->leftjoin('sales_stocks', 'sales_stocks.product_id', '=', 'products.id')
+            ->groupBy('sales_stocks.product_id')
             ->get(),
             'user' => User::whereHas(
                 'roles', function($q){

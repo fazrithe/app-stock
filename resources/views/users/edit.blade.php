@@ -58,13 +58,13 @@
                 <div class="form-group">
                     <strong>Area:</strong>
                     <select name="area" class="form-control">
-                        @if($user->area == 'gudang')
-                        <option value="gudang">Gudang</option>
-                        <option value="toko">Toko</option>
-                        @else
-                        <option value="toko">Toko</option>
-                        <option value="gudang">Gudang</option>
-                        @endif
+                        @foreach ($stock as $item)
+                            @if($item == $user->area)
+                            <option value="{{ $item }}" selected>{{ $item }}</option>
+                            @else
+                            <option value="{{ $item }}">{{ $item }}</option>
+                            @endif
+                        @endforeach
                     </select>
                 </div>
             </div>

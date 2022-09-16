@@ -17,7 +17,7 @@
             {{-- @can('product-create')
             <a class="btn btn-primary" href="{{ route('products.create') }}"> Create Barang</a>
             @endcan --}}
-            <a class="btn btn-success" href="{{ route('product.export') }}">Export Barang</a>
+            {{-- <a class="btn btn-success" href="{{ route('product.export') }}">Export Barang</a> --}}
         </div>
         <hr>
       <table id="myTable" class="table table-bordered table-striped">

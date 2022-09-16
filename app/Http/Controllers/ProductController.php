@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\ProductExport;
 use DataTables;
+use App\Models\User;
 
 class ProductController extends Controller
 {
@@ -28,10 +29,14 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        // return $request->date;
         if(\request()->ajax()){
-            $data = Product::latest()->get();
+            $data = Product::select('products.*')
+            // ->whereDate('updated_at', '=', $request->date)
+            // ->join('sales_stocks', 'sales_stocks.product_id', '=', 'products.id')
+            ->get();
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function($row){
@@ -51,6 +56,14 @@ class ProductController extends Controller
      */
     public function selectProduct()
     {
+        // $u = User::whereHas(
+        //     'roles', function($q){
+        //         $q->where('name', 'Sales');
+        //     }
+        // )->get();
+        // foreach($u as $d){
+        //     return $d->name;
+        // }
         return view('products.select');
     }
 

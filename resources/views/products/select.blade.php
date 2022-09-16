@@ -15,18 +15,35 @@
     <div class="card-body">
         <div class="row">
             <div class="col-6">
-            <form method="POST" action="{{ route('product.export') }}">
+                <form method="POST" action="{{ route('product.export') }}">
                 @csrf
                 <div class="form-group row">
                     <label for="tanggal" class="col-md-4 col-form-label text-md-right">{{ __('Tanggal') }}</label>
 
                     <div class="col-md-6">
-                        <input id="tanggal" type="text" class="date form-control" name="date" value="" required autofocus>
+                        <input id="tanggal" type="text" class="date1 form-control" name="date" value="" required autofocus>
                     </div>
                 </div>
                 <div class="form-group row">
                     <div class="col-md-10 text-right">
                     <button class="btn btn-success">Export Barang</button>
+                    </div>
+                </div>
+            </form>
+            </div>
+            <div class="col-6">
+                <form method="POST" action="{{ route('product.showDate') }}">
+                @csrf
+                <div class="form-group row">
+                    <label for="tanggal" class="col-md-4 col-form-label text-md-right">{{ __('Tanggal') }}</label>
+
+                    <div class="col-md-6">
+                        <input id="tanggal" type="text" class="date1 form-control" name="date" value="" required autofocus>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-10 text-right">
+                    <button class="btn btn-success">Tampil Barang</button>
                     </div>
                 </div>
             </form>
@@ -38,7 +55,7 @@
   <!-- /.card -->
 
 <script type="text/javascript">
-    $('.date').datepicker({
+    $('.date1').datepicker({
        format: 'yyyy-mm-dd',
        autoclose: true,
      });

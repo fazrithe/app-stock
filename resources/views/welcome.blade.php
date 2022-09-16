@@ -35,8 +35,16 @@
                             <div class="col-md-6">
                                 <select name="area" class="form-control" required>
                                     <option value="">--Select Tempat--</option>
-                                    <option value="toko">Toko</option>
-                                    <option value="gudang">Gudang</option>
+                                    <option value="toko1">Toko1</option>
+                                    <option value="toko2">Toko2</option>
+                                    <option value="toko3">Toko3</option>
+                                    <option value="tok4">Toko4</option>
+                                    <option value="toko5">Toko5</option>
+                                    <option value="gudang1">Gudang1</option>
+                                    <option value="gudang2">Gudang2</option>
+                                    <option value="gudang3">Gudang3</option>
+                                    <option value="gudang4">Gudang4</option>
+                                    <option value="gudang5">Gudang5</option>
                                 </select>
                             </div>
                         </div>

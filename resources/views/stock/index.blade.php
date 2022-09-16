@@ -20,7 +20,7 @@
                     <div class="col mb-4">
                         <div class="text-center text-bold">STOCK OPNAME TOKO</div>
                         <div class="text-right">
-                            <label>{{ $data['area'] }}</label>
+                            <label>{{ ucfirst(strtolower(trans($data['area']))) }}</label>
                         </div>
                     </div>
 

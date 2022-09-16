@@ -44,13 +44,14 @@
                 <td>{{ $dt->stok_toko2 }}</td>
                 <td>{{ $dt->stok_toko3 }}</td>
                 <td>{{ $dt->stok_toko4 }}</td>
-                <td></td>
+                <td>{{ $dt->stok_toko5 }}</td>
+                <td>{{ $dt->stok_toko1+$dt->stok_toko2+$dt->stok_toko3+$dt->stok_toko4+$dt->stok_toko5 }}</td>
                 <td>{{ $dt->stok_gudang1 }}</td>
                 <td>{{ $dt->stok_gudang2 }}</td>
                 <td>{{ $dt->stok_gudang3 }}</td>
                 <td>{{ $dt->stok_gudang4 }}</td>
                 <td>{{ $dt->stok_gudang5 }}</td>
-                <td></td>
+                <td>{{ $dt->stok_gudang1+$dt->stok_gudang2+$dt->stok_gudang3+$dt->stok_gudang4+$dt->stok_gudang5 }}</td>
                 <td>{{ $dt->stock_date }}</td>
             </tr>
         @endforeach

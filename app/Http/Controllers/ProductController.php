@@ -31,22 +31,13 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-        // return $request->date;
-        if(\request()->ajax()){
-            $data = Product::select('products.*')
-            // ->whereDate('updated_at', '=', $request->date)
-            // ->join('sales_stocks', 'sales_stocks.product_id', '=', 'products.id')
-            ->get();
-            return DataTables::of($data)
-                ->addIndexColumn()
-                ->addColumn('action', function($row){
-                    $actionBtn = '<a href="javascript:void(0)" class="edit btn btn-success btn-sm">Edit</a> <a href="javascript:void(0)" class="delete btn btn-danger btn-sm">Delete</a>';
-                    return $actionBtn;
-                })
-                ->rawColumns(['action'])
-                ->make(true);
-        }
-        return view('products.index');
+        $products = Product::select('sales_stocks.*','products.*','sales_stocks.updated_at as stock_date')
+        ->whereDate('sales_stocks.updated_at', $request->date)
+        ->leftjoin('sales_stocks', 'sales_stocks.product_id', '=', 'products.id')
+        ->get();
+
+        // return $product;
+        return view('products.index', compact('products'));
     }
 
      /**

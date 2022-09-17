@@ -14,22 +14,32 @@
     <!-- /.card-header -->
     <div class="card-body">
         <div class="pull-right">
-            {{-- @can('product-create')
+            @can('product-create')
             <a class="btn btn-primary" href="{{ route('products.create') }}"> Create Barang</a>
-            @endcan --}}
-            {{-- <a class="btn btn-success" href="{{ route('product.export') }}">Export Barang</a> --}}
+            @endcan
         </div>
         <hr>
-      <table id="myTable" class="table table-bordered table-striped">
+      <table id="example1" class="table table-bordered table-striped">
         <thead>
         <tr>
-            <th>No</th>
             <th>Kode Barang</th>
+            <th>Barcode</th>
             <th>Nama Barang</th>
-            {{-- <th width="">Action</th> --}}
+            <th width="">Action</th>
         </tr>
         </thead>
-        </tfoot>
+            @foreach($products as $item)
+            <tr>
+            <td>{{ $item->kode_barang }}</td>
+            <td>{{ $item->barcode }}</td>
+            <td>{{ $item->nama_barang }}</td>
+            <td width=""> <a class="btn btn-info" href="{{ route('products.show',$item->id) }}">Show</a>
+                <a class="btn btn-success" href="{{ route('products.edit',$item->id) }}">Edit</a>
+                 {!! Form::open(['method' => 'DELETE','route' => ['products.destroy', $item->id],'style'=>'display:inline']) !!}
+                     {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+                 {!! Form::close() !!}</td>
+            </tr>
+            @endforeach
       </table>
     </div>
     <!-- /.card-body -->

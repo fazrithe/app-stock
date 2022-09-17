@@ -28,8 +28,6 @@
                             <label class="col-md-4 col-form-label text-md-right">{{ __('Kode Barang') }}</label>
                             <div class="col-md-6">
 
-                            <form method="POST" action="{{ route('product.search') }}">
-                                @csrf
                                 <div class="input-group">
                                     <input type="hidden" name="area" id="area" class="form-control" value="{{ $data['area'] }}">
                                     <input type="hidden" name="login_date" id="login_date" class="form-control" value="{{ $data['login_date'] }}">
@@ -43,7 +41,6 @@
                                         </button>
                                     </div>
                                 </div>
-                            </form>
                             </div>
                         </div>
                         <div align="center" id="or">

@@ -92,6 +92,12 @@ class ProductController extends Controller
         $product->merk = $request->merk;
         $product->satuan = $request->satuan;
         $product->harga_jakarta = $request->harga_jakarta;
+        if($request->file('image')){
+            $file= $request->file('image');
+            $filename= date('YmdHi').$file->getClientOriginalName();
+            $file-> move(public_path('public/uploads'), $filename);
+            $product->gambar = $filename;
+        }
         $product->harga_bali = $request->harga_bali;
         $product->created_at = $request->create_date;
         $product->save();
@@ -143,6 +149,12 @@ class ProductController extends Controller
         $product->satuan = $request->satuan;
         $product->harga_jakarta = $request->harga_jakarta;
         $product->harga_bali = $request->harga_bali;
+        if($request->file('image')){
+            $file= $request->file('image');
+            $filename= date('YmdHi').$file->getClientOriginalName();
+            $file-> move(public_path('public/uploads'), $filename);
+            $product->gambar = $filename;
+        }
         $product->created_at = $request->create_date;
         $product->updated_at = $request->create_date;
         $product->save();

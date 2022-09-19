@@ -20,7 +20,7 @@
         @endif
 
 
-        <form action="{{ route('products.store') }}" method="POST">
+        <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12">
@@ -69,6 +69,12 @@
                     <div class="form-group">
                         <strong>Tanggal:</strong>
                         <input id="tanggal" type="text" class="form-control" name="create_date" value="" required autofocus>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="form-group">
+                        <strong>Gambar:</strong>
+                        <input type="file" class="form-control" required name="image">
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12 text-center">

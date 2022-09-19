@@ -8,7 +8,7 @@
         <!-- small box -->
         <div class="small-box bg-info">
           <div class="inner">
-            <h3>150</h3>
+            <h3>{{$total}}</h3>
 
             <p>Stock Opname</p>
           </div>
@@ -23,14 +23,14 @@
         <!-- small box -->
         <div class="small-box bg-success">
           <div class="inner">
-            <h3>2000<sup style="font-size: 20px"></sup></h3>
+            <h3>{{$total_product}}<sup style="font-size: 20px"></sup></h3>
 
             <p>Barang</p>
           </div>
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
           </div>
-          <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+          <a href="{{ route('product.select') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
         </div>
       </div>
       <!-- ./col -->
@@ -38,7 +38,7 @@
         <!-- small box -->
         <div class="small-box bg-warning">
           <div class="inner">
-            <h3>11</h3>
+            <h3>{{$total_user}}</h3>
 
             <p>User Registrations</p>
           </div>

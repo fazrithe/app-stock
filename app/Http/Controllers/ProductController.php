@@ -31,8 +31,11 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
+        $product_date = $request->session()->get('create_date');
+        // return $product_date;
         $products = Product::select('sales_stocks.*','products.*','sales_stocks.updated_at as stock_date')
         ->whereDate('sales_stocks.updated_at', $request->date)
+        ->orWhereDate('products.updated_at', $product_date)
         ->leftjoin('sales_stocks', 'sales_stocks.product_id', '=', 'products.id')
         ->get();
 
@@ -77,11 +80,22 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         request()->validate([
-            'name' => 'required',
+            'kode_barang' => 'required',
+            'barcode' => 'required',
+            'nama_barang' => 'required',
         ]);
 
-        Product::create($request->all());
-
+        $product = new Product();
+        $product->kode_barang = $request->kode_barang;
+        $product->barcode = $request->barcode;
+        $product->nama_barang = $request->nama_barang;
+        $product->merk = $request->merk;
+        $product->satuan = $request->satuan;
+        $product->harga_jakarta = $request->harga_jakarta;
+        $product->harga_bali = $request->harga_bali;
+        $product->created_at = $request->create_date;
+        $product->save();
+        $request->session()->put('create_date', $request->create_date);
         return redirect()->route('products.index')
                         ->with('success','Product created successfully.');
     }
@@ -121,7 +135,18 @@ class ProductController extends Controller
             'nama_barang' => 'required',
         ]);
 
-        $product->update($request->all());
+        $product = Product::find($request->id);
+        $product->kode_barang = $request->kode_barang;
+        $product->barcode = $request->barcode;
+        $product->nama_barang = $request->nama_barang;
+        $product->merk = $request->merk;
+        $product->satuan = $request->satuan;
+        $product->harga_jakarta = $request->harga_jakarta;
+        $product->harga_bali = $request->harga_bali;
+        $product->created_at = $request->create_date;
+        $product->updated_at = $request->create_date;
+        $product->save();
+        $request->session()->put('create_date', $request->create_date);
 
         return redirect()->route('products.index')
                         ->with('success','Product updated successfully');

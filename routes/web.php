@@ -8,6 +8,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\sales\StockController;
+use App\Http\Controllers\ImageController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -42,4 +43,9 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('showProduct/{id}', [StockController::class, 'showProduct'])->name('product.show');
     Route::get('product/import', [ProductController::class, 'importProduct'])->name('product.import');
     Route::post('product/import/store', [ProductController::class, 'importProductStore'])->name('product.import.store');
+
+    Route::get('images', [ImageController::class, 'index'])->name('images');
+    Route::get('image/upload', [ImageController::class, 'upload'])->name('images.upload');
+    Route::post('image/upload/store', [ImageController::class, 'uploadStore'])->name('images.upload.store');
+    Route::post('image/upload/delete', [ImageController::class, 'uploadDestory'])->name('images.upload.destroy');
 });

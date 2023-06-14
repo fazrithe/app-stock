@@ -48,6 +48,44 @@
                 </div>
             </form>
             </div>
+        </div><hr>
+        <div class="row">
+            <div class="col-2">
+                @can('product-create')
+                <a class="btn btn-primary" href="{{ route('products.create') }}"> Create Barang</a>
+                @endcan
+            </div>
+            <div class="col-2">
+                @can('product-create')
+                <a class="btn btn-danger" href="{{ route('product.import') }}"> Import Barang</a>
+                @endcan
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <table id="example1" class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                        <th>Kode Barang</th>
+                        <th>Barcode</th>
+                        <th>Nama Barang</th>
+                        <th width="">Action</th>
+                    </tr>
+                    </thead>
+                        @foreach($products as $item)
+                        <tr>
+                        <td>{{ $item->kode_barang }}</td>
+                        <td>{{ $item->barcode }}</td>
+                        <td>{{ $item->nama_barang }}</td>
+                        <td width=""> <a class="btn btn-info" href="{{ route('products.show',$item->id) }}">Show</a>
+                            <a class="btn btn-success" href="{{ route('products.edit',$item->id) }}">Edit</a>
+                             {!! Form::open(['method' => 'DELETE','route' => ['products.destroy', $item->id],'style'=>'display:inline']) !!}
+                                 {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+                             {!! Form::close() !!}</td>
+                        </tr>
+                        @endforeach
+                  </table>
+            </div>
         </div>
     </div>
     <!-- /.card-body -->

@@ -6,6 +6,7 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\ProductExport;
+use App\Imports\ProductImport;
 use DataTables;
 use App\Models\User;
 
@@ -58,7 +59,9 @@ class ProductController extends Controller
         // foreach($u as $d){
         //     return $d->name;
         // }
-        return view('products.select');
+        $products = Product::orderBy('created_at', 'desc')->limit(1000)->get();
+
+        return view('products.select', compact('products'));
     }
 
     /**
@@ -69,6 +72,37 @@ class ProductController extends Controller
     public function create()
     {
         return view('products.create');
+    }
+
+        /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function importProduct()
+    {
+        return view('products.import');
+    }
+
+            /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function importProductStore(Request $request)
+    {
+        // validasi
+		$this->validate($request, [
+			'file' => 'required|mimes:csv,xls,xlsx'
+		]);
+
+		$file = $request->file('file');
+        $nama_file = rand().$file->getClientOriginalName();
+		$file->move('file/product',$nama_file);
+
+		// import data
+		Excel::import(new ProductImport, public_path('/file/product/'.$nama_file));
+        return view('products.import');
     }
 
     /**

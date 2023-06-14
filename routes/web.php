@@ -40,4 +40,6 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('searchProduct', [StockController::class, 'searchProduct'])->name('product.search');
     Route::post('updateProduct', [StockController::class, 'updateProduct'])->name('product.update');
     Route::get('showProduct/{id}', [StockController::class, 'showProduct'])->name('product.show');
+    Route::get('product/import', [ProductController::class, 'importProduct'])->name('product.import');
+    Route::post('product/import/store', [ProductController::class, 'importProductStore'])->name('product.import.store');
 });

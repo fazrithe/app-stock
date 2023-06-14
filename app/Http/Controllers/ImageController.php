@@ -15,7 +15,8 @@ class ImageController extends Controller
      */
     public function index()
     {
-        return view('images.index');
+        $images = Image::orderBy('created_at', 'desc')->get();
+        return view('images.index', compact('images'));
     }
 
       /**
@@ -38,8 +39,8 @@ class ImageController extends Controller
         $image = $request->file('file');
         $imageNameOri   = $request->file('file')->getClientOriginalName();
         $imageName = time().'.'.$image->extension();
-        $image->move(public_path('images'),$imageName);
-        $url    = '/images/'.$imageName;
+        $image->move(public_path('public/uploads'),$imageName);
+        $url    = '/public/uploads/'.$imageName;
 
         $image = new Image();
         $image->image_name  = $imageNameOri;

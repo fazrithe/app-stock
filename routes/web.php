@@ -44,7 +44,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('product/import', [ProductController::class, 'importProduct'])->name('product.import');
     Route::post('product/import/store', [ProductController::class, 'importProductStore'])->name('product.import.store');
 
-    Route::get('images', [ImageController::class, 'index'])->name('images');
+    Route::get('image', [ImageController::class, 'index'])->name('images');
     Route::get('image/upload', [ImageController::class, 'upload'])->name('images.upload');
     Route::post('image/upload/store', [ImageController::class, 'uploadStore'])->name('images.upload.store');
     Route::post('image/upload/delete', [ImageController::class, 'uploadDestory'])->name('images.upload.destroy');

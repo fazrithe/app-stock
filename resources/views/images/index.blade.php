@@ -18,7 +18,7 @@
             <div class="col-md-4">
               <div class="thumbnail">
                 <a href="/w3images/lights.jpg">
-                  <img src="{{ asset($value->image_url) }}" alt="Lights" style="width:100%">
+                  <img src="{{ asset('/public/'.$value->image_url) }}" alt="Lights" style="width:100%">
                   <div class="caption">
                     <p>{{ $value->image_name }}</p>
                   </div>

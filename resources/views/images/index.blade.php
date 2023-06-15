@@ -16,17 +16,21 @@
         <div class="row">
             @foreach($images as $value)
             <div class="col-md-4">
-              <div class="thumbnail">
-                <a href="/w3images/lights.jpg">
-                  <img src="{{ asset('/public/'.$value->image_url) }}" alt="Lights" style="width:100%">
-                  <div class="caption">
-                    <p>{{ $value->image_name }}</p>
-                  </div>
-                  <div class="caption">
-                    <p>{{ $value->image_url }}</p>
-                  </div>
-                </a>
-              </div>
+                <div class="card">
+                    <div class="card-body">
+                    <div class="thumbnail">
+                        <a href="/w3images/lights.jpg">
+                        <img src="{{ asset('/public/'.$value->image_url) }}" alt="Lights" style="width:100%">
+                        <div class="caption">
+                            <p>{{ $value->image_name }}</p>
+                        </div>
+                        <div class="caption">
+                            <p>{{ $value->image_url }}</p>
+                        </div>
+                        </a>
+                    </div>
+                    </div>
+                </div>
             </div>
             @endforeach
         </div>

@@ -102,7 +102,8 @@ class ProductController extends Controller
 
 		// import data
 		Excel::import(new ProductImport, public_path('/file/product/'.$nama_file));
-        return view('products.import');
+        return redirect()->route('product.select')
+        ->with('success','Product created successfully.');
     }
 
     /**

@@ -56,7 +56,7 @@
                 @endcan
             </div>
             <div class="col-2">
-                @can('product-create')
+                @can('product-import')
                 <a class="btn btn-danger" href="{{ route('product.import') }}"> Import Barang</a>
                 @endcan
             </div>
@@ -77,11 +77,17 @@
                         <td>{{ $item->kode_barang }}</td>
                         <td>{{ $item->barcode }}</td>
                         <td>{{ $item->nama_barang }}</td>
-                        <td width=""> <a class="btn btn-info" href="{{ route('products.show',$item->id) }}">Show</a>
+                        <td width="">
+                            <a class="btn btn-info" href="{{ route('products.show',$item->id) }}">Show</a>
+                            @can('product-edit')
                             <a class="btn btn-success" href="{{ route('products.edit',$item->id) }}">Edit</a>
+                            @endcan
+                            @can('product-delete')
                              {!! Form::open(['method' => 'DELETE','route' => ['products.destroy', $item->id],'style'=>'display:inline']) !!}
                                  {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
-                             {!! Form::close() !!}</td>
+                             {!! Form::close() !!}
+                            @endcan
+                        </td>
                         </tr>
                         @endforeach
                   </table>

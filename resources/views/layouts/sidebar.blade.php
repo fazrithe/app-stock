@@ -50,6 +50,7 @@
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
+            @can('product-list')
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="{{ route('product.select') }}" class="nav-link">
@@ -58,6 +59,8 @@
                 </a>
               </li>
             </ul>
+            @endcan
+            @can('product-image')
             <ul class="nav nav-treeview">
                 <li class="nav-item">
                   <a href="{{ route('images') }}" class="nav-link">
@@ -65,7 +68,8 @@
                     <p>Gambar Barang</p>
                   </a>
                 </li>
-              </ul>
+            </ul>
+            @endcan
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
@@ -75,6 +79,7 @@
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
+            @can('role-list')
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="{{ route('users.index') }}" class="nav-link">
@@ -83,6 +88,8 @@
                 </a>
               </li>
             </ul>
+            @endcan
+            @can('role-list')
             <ul class="nav nav-treeview">
                 <li class="nav-item">
                   <a href="{{ route('roles.index') }}" class="nav-link">
@@ -91,6 +98,7 @@
                   </a>
                 </li>
               </ul>
+              @endcan
           </li>
 
         <li class="nav-item">

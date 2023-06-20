@@ -55,7 +55,7 @@ class LoginController extends Controller
 
         if (Auth::Attempt($data)) {
             $area = Auth::user()->area;
-            return redirect('/home-admin');
+            return redirect('stocks');
         }else{
             return redirect('/')->with('error', 'Email atau Password Salah');
         }

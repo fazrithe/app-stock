@@ -49,6 +49,25 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function showProduct(Request $request)
+    {
+        $product_date = $request->date;
+        // return $product_date;
+        // return $product_date;
+        $products = Product::select('sales_stocks.*','products.*','sales_stocks.updated_at as stock_date')
+        ->WhereDate('products.updated_at', $product_date)
+        ->leftjoin('sales_stocks', 'sales_stocks.product_id', '=', 'products.id')
+        ->get();
+
+        // return $product;
+        return view('products.index', compact('products'));
+    }
+
+     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function selectProduct()
     {
         // $u = User::whereHas(

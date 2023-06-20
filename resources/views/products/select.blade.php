@@ -61,7 +61,7 @@
                 @endcan
             </div>
         </div>
-        <div class="row">
+        {{-- <div class="row">
             <div class="col">
                 <table id="example1" class="table table-bordered table-striped">
                     <thead>
@@ -92,7 +92,7 @@
                         @endforeach
                   </table>
             </div>
-        </div>
+        </div> --}}
     </div>
     <!-- /.card-body -->
   </div>

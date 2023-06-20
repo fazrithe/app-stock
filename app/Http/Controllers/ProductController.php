@@ -117,7 +117,7 @@ class ProductController extends Controller
 
 		$file = $request->file('file');
         $nama_file = rand().$file->getClientOriginalName();
-		$file->move('file/product',$nama_file);
+		$file->move('public/file/product',$nama_file);
 
 		// import data
 		Excel::import(new ProductImport, public_path('/file/product/'.$nama_file));

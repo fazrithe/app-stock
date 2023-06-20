@@ -38,8 +38,9 @@ class ProductImport implements ToCollection, WithHeadingRow
                 $product->nama_barang   = $row['nama_barang'];
                 $product->satuan        = $row['satuan'];
                 $product->harga_jakarta = $row['harga_jakarta'];
-                $product->harga_beli    = $row['harga_beli'];
-                $product->gamabr        = $row['gambar'];
+                $product->harga_bali    = $row['harga_beli'];
+                $product->gambar        = $row['gambar'];
+                $product->save();
             }
         }
     }

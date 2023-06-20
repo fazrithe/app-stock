@@ -28,7 +28,7 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         $auth = Auth::user()->roles->first()->name ;
-        if($auth == 'Admin'){
+        if($auth == 'Admin' or $auth == 'Gudang'){
             $date =  date('Y-m-d');
             // return $date;
             $gudang1 = Sales_stock::whereDate('sales_stocks.updated_at', $date)->sum('stok_gudang1');

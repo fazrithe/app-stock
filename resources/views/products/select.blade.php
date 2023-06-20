@@ -13,6 +13,7 @@
     </div>
     <!-- /.card-header -->
     <div class="card-body">
+        @can('product-edit')
         <div class="row">
             <div class="col-6">
                 <form method="POST" action="{{ route('product.export') }}">
@@ -49,6 +50,7 @@
             </form>
             </div>
         </div><hr>
+        @endcan
         <div class="row">
             <div class="col-2">
                 @can('product-create')
@@ -61,7 +63,7 @@
                 @endcan
             </div>
         </div>
-        {{-- <div class="row">
+        <div class="row">
             <div class="col">
                 <table id="example1" class="table table-bordered table-striped">
                     <thead>
@@ -92,7 +94,7 @@
                         @endforeach
                   </table>
             </div>
-        </div> --}}
+        </div>
     </div>
     <!-- /.card-body -->
   </div>

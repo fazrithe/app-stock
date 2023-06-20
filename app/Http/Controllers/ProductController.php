@@ -32,16 +32,16 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-        $product_date = $request->session()->get('create_date');
-        // return $product_date;
-        $products = Product::select('sales_stocks.*','products.*','sales_stocks.updated_at as stock_date')
-        ->whereDate('sales_stocks.updated_at', $request->date)
-        ->orWhereDate('products.updated_at', $product_date)
-        ->leftjoin('sales_stocks', 'sales_stocks.product_id', '=', 'products.id')
-        ->get();
+        // $product_date = $request->session()->get('create_date');
+        // // return $product_date;
+        // $products = Product::select('sales_stocks.*','products.*','sales_stocks.updated_at as stock_date')
+        // ->whereDate('sales_stocks.updated_at', $request->date)
+        // ->orWhereDate('products.updated_at', $product_date)
+        // ->leftjoin('sales_stocks', 'sales_stocks.product_id', '=', 'products.id')
+        // ->get();
 
         // return $product;
-        return view('products.index', compact('products'));
+        return view('products.index');
     }
 
      /**

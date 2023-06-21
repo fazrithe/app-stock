@@ -7,7 +7,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\sales\StockController;
+use App\Http\Controllers\Sales\StockController;
 use App\Http\Controllers\ImageController;
 /*
 |--------------------------------------------------------------------------

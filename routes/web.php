@@ -9,6 +9,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Sales\StockController;
 use App\Http\Controllers\ImageController;
+use App\Http\Controllers\GalleryController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,6 +35,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('roles', RoleController::class);
     Route::resource('users', UserController::class);
     Route::resource('products', ProductController::class);
+    Route::resource('gallery', GalleryController::class);
     Route::get('product/select', [ProductController::class, 'selectProduct'])->name('product.select');
     Route::post('productExport', [ProductController::class, 'export'])->name('product.export');
     Route::post('productShowDate', [ProductController::class, 'showProduct'])->name('product.showDate');

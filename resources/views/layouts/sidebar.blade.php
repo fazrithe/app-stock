@@ -46,6 +46,45 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-table"></i>
               <p>
+                Gallery
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            @can('product-list')
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('gallery.index') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Data Gallery Gambar</p>
+                </a>
+              </li>
+            </ul>
+            @endcan
+            @can('product-image')
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{ route('images') }}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Data Gallery Video</p>
+                  </a>
+                </li>
+            </ul>
+            @endcan
+            @can('product-image')
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{ route('images') }}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Data Gallery</p>
+                  </a>
+                </li>
+            </ul>
+            @endcan
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-table"></i>
+              <p>
                 Barang
                 <i class="fas fa-angle-left right"></i>
               </p>

@@ -10,6 +10,9 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Sales\StockController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\GalleryCategoryControler;
+use App\Models\Gallery_category;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -36,6 +39,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('users', UserController::class);
     Route::resource('products', ProductController::class);
     Route::resource('gallery', GalleryController::class);
+    Route::resource('category-gallery', GalleryCategoryControler::class);
+    Route::post('category-gallery/update', [GalleryCategoryControler::class, 'update'])->name('category.update');
     Route::get('product/select', [ProductController::class, 'selectProduct'])->name('product.select');
     Route::post('productExport', [ProductController::class, 'export'])->name('product.export');
     Route::post('productShowDate', [ProductController::class, 'showProduct'])->name('product.showDate');

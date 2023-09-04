@@ -30,7 +30,7 @@
             @foreach($gallery as $item)
             <tr>
             <td>{{ $item->name }}</td>
-            <td><img src="{{ asset('public/uploads/gallery/img/'.$item->path)}}" width="80px"></td>
+            <td><img src="{{ asset('public/public/uploads/gallery/img/'.$item->path)}}" width="80px"></td>
             <td width="">
                 <a class="btn btn-success" href="{{ route('gallery.edit',$item->id) }}">Edit</a>
                  {!! Form::open(['method' => 'DELETE','route' => ['gallery.destroy', $item->id],'style'=>'display:inline']) !!}

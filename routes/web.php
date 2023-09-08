@@ -11,6 +11,7 @@ use App\Http\Controllers\Sales\StockController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\GalleryCategoryControler;
+use App\Http\Controllers\GalleryVideoController;
 use App\Models\Gallery_category;
 
 /*
@@ -40,6 +41,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('products', ProductController::class);
     Route::resource('gallery', GalleryController::class);
     Route::resource('category-gallery', GalleryCategoryControler::class);
+    Route::resource('gallery-video', GalleryVideoController::class);
     Route::post('category-gallery/update', [GalleryCategoryControler::class, 'update'])->name('category.update');
     Route::get('product/select', [ProductController::class, 'selectProduct'])->name('product.select');
     Route::post('productExport', [ProductController::class, 'export'])->name('product.export');

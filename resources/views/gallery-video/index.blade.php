@@ -32,7 +32,7 @@
             <td>{{ $item->name }}</td>
             <td>
                 <video width="300" controls="controls" preload="metadata">
-                    <source src="{{ asset('public/uploads/gallery/video/'.$item->path)}}" type="video/mp4">
+                    <source src="{{ asset('public/public/uploads/gallery/video/'.$item->path)}}" type="video/mp4">
                   </video></td>
             <td width="">
                 <a class="btn btn-success" href="{{ route('gallery-video.edit',$item->id) }}">Edit</a>

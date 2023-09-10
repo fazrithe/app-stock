@@ -22,7 +22,7 @@
         @endif
 
 
-        <form action="{{ route('gallery.update',$gallery->id) }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('gallery-video.update',$gallery->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
 
@@ -30,7 +30,7 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
-                        <strong>Nama Barang:</strong>
+                        <strong>Nama:</strong>
                         <input type="hidden" name="id" value="{{$gallery->id}}">
                         <input type="text" name="name" value="{{$gallery->name}}" class="form-control" placeholder="Nama Barang" required>
                     </div>
@@ -52,8 +52,8 @@
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
-                        <strong>Gambar:</strong>
-                        <input type="file" class="form-control" name="image">
+                        <strong>File:</strong>
+                        <input type="file" class="form-control" name="file">
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12 text-center">

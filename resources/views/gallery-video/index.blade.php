@@ -30,10 +30,13 @@
             @foreach($gallery as $item)
             <tr>
             <td>{{ $item->name }}</td>
-            <td><img src="{{ asset('public/public/uploads/gallery/img/'.$item->path)}}" width="80px"></td>
+            <td>
+                <video width="300" controls="controls" preload="metadata">
+                    <source src="{{ asset('public/uploads/gallery/video/'.$item->path)}}" type="video/mp4">
+                  </video></td>
             <td width="">
-                <a class="btn btn-success" href="{{ route('gallery.edit',$item->id) }}">Edit</a>
-                 {!! Form::open(['method' => 'DELETE','route' => ['gallery.destroy', $item->id],'style'=>'display:inline']) !!}
+                <a class="btn btn-success" href="{{ route('gallery-video.edit',$item->id) }}">Edit</a>
+                 {!! Form::open(['method' => 'DELETE','route' => ['gallery-video.destroy', $item->id],'style'=>'display:inline']) !!}
                      {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
                  {!! Form::close() !!}</td>
             </tr>

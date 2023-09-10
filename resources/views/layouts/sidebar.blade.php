@@ -73,7 +73,7 @@
             @can('product-image')
             <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="{{ route('images') }}" class="nav-link">
+                  <a href="{{ route('gallery-data.index') }}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Data Gallery</p>
                   </a>

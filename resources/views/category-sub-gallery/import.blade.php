@@ -4,7 +4,7 @@
 @section('content')
 <div class="card">
     <div class="card-header">
-      <h3 class="card-title">Create Category</h3>
+      <h3 class="card-title">Create Barang</h3>
     </div>
     <!-- /.card-header -->
     <div class="card-body">
@@ -20,28 +20,28 @@
         @endif
 
 
-        <form action="{{ route('category-gallery.store') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('product.import.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="col-6">
                     <div class="form-group">
-                        <strong>Nama Barang:</strong>
-                        <input type="text" name="name" class="form-control" placeholder="Nama Barang" required>
+                        <strong>Tanggal:</strong>
+                        <input id="tanggal" type="text" class="form-control" name="create_date" value="" required autofocus>
                     </div>
                 </div>
-                <div class="col-xs-12 col-sm-12 col-md-12">
+            </div>
+            <div class="row">
+                <div class="col-6">
                     <div class="form-group">
-                        <strong>Type:</strong>
-                        <select class="form-control" name="type">
-                            <option value="image">Image</option>
-                            <option value="video">Video</option>
-                            <option value="data">Data</option>
-                        </select>
+                        <strong>File:</strong>
+                        <input type="file" class="form-control" required name="file">
                     </div>
                 </div>
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <button type="submit" class="btn btn-danger">Submit</button>
+            </div>
             </div>
         </form>
     </div>

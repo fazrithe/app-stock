@@ -80,6 +80,16 @@
                 </li>
             </ul>
             @endcan
+            @can('product-image')
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{ route('category-gallery.index') }}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Data Category</p>
+                  </a>
+                </li>
+            </ul>
+            @endcan
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">

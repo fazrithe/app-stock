@@ -15,14 +15,13 @@
     <div class="card-body">
         <div class="pull-right">
             @can('product-create')
-            <a class="btn btn-primary" href="{{ route('category-gallery.create') }}"> Create Kategori</a>
+            <a class="btn btn-primary" href="{{ route('category-sub-gallery.create') }}"> Create Sub Kategori</a>
             @endcan
         </div>
       <hr>
       <table id="example1" class="table table-bordered table-striped">
         <thead>
         <tr>
-            <th>Nama Kategori</th>
             <th>Nama Sub Kategori</th>
             <th width="">Action</th>
         </tr>
@@ -30,11 +29,9 @@
             @foreach($gallery as $item)
             <tr>
             <td>{{ $item->name }}</td>
-            <td>{{ $item->name }}</td>
             <td width="">
-                <a class="btn btn-primary" href="{{route('category-sub-gallery.index')}}">Add Sub Kategori</a>
-                <a class="btn btn-success" href="{{ route('category-gallery.edit',$item->id) }}">Edit</a>
-                 {!! Form::open(['method' => 'DELETE','route' => ['category-gallery.destroy', $item->id],'style'=>'display:inline']) !!}
+                <a class="btn btn-success" href="{{ route('category-sub-gallery.edit',$item->id) }}">Edit</a>
+                 {!! Form::open(['method' => 'DELETE','route' => ['category-sub-gallery.destroy', $item->id],'style'=>'display:inline']) !!}
                      {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
                  {!! Form::close() !!}</td>
             </tr>
